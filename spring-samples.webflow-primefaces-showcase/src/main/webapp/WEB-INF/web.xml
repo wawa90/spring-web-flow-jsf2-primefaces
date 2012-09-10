@@ -4,6 +4,15 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 	<!-- 
+		PRIMEFACES THEME
+	-->
+
+	<context-param>  
+		<param-name>primefaces.THEME</param-name>  
+		<param-value>bootstrap</param-value>  
+	</context-param>  
+
+	<!-- 
 		SPRING ROOT WEB APPLICATION CONTEXT
 	-->
 
