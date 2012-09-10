@@ -2,21 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.springframework.samples</groupId>
-	<artifactId>webflow-primefaces-showcase</artifactId>
+	<groupId>modded.org.springframework.samples</groupId>
+	<artifactId>modded-webflow-primefaces-showcase</artifactId>
 	<name>JSF 2, Spring Web Flow, and PrimeFaces Showcase</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
 	<properties>
 		<java-version>1.5</java-version>
-		<springframework-version>3.1.1.RELEASE</springframework-version>
+		<springframework-version>3.1.2.RELEASE</springframework-version>
 		<springwebflow-version>2.3.1.RELEASE</springwebflow-version>
-		<springsecurity-version>3.1.1.RELEASE</springsecurity-version>
+		<springsecurity-version>3.1.2.RELEASE</springsecurity-version>
 		<org.slf4j-version>1.5.10</org.slf4j-version>
     <log4j-version>1.2.14</log4j-version>
     <javax.servlet-api-version>2.5</javax.servlet-api-version>
-    <javax.servlet.jsp-api-version>2.2</javax.servlet.jsp-api-version>
+    <javax.servlet.jsp-api-version>2.1</javax.servlet.jsp-api-version>
     <javax.servlet.jstl-version>1.2</javax.servlet.jstl-version>
     <jsf.mojarra-version>2.1.7</jsf.mojarra-version>
     <org.primefaces-version>3.4</org.primefaces-version>
@@ -125,6 +125,20 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>${jsf.mojarra-version}</version>
 		</dependency>
+	
+		<!-- 
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>2.1.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-impl</artifactId>
+			<version>2.1.8</version>
+		</dependency>
+		-->
+            
 		<!-- PrimeFaces component library -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
@@ -132,10 +146,10 @@
 			<version>${org.primefaces-version}</version>
 		</dependency>
 		<dependency><!-- optional theme (see also web.xml to enable it) -->
-      <groupId>org.primefaces.themes</groupId>
-      <artifactId>bootstrap</artifactId>
-      <version>${org.primefaces.themes-version}</version>
-    </dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${org.primefaces.themes-version}</version>
+		</dependency>  
 		<!-- JSR 303 validation -->
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -249,6 +263,7 @@
    		<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
 				<configuration>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
@@ -270,6 +285,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
 				<executions>
 					<execution>
 						<id>install</id>
