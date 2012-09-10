@@ -21,13 +21,6 @@
     <jsf.mojarra-version>2.1.7</jsf.mojarra-version>
     <org.primefaces-version>3.4</org.primefaces-version>
     <org.primefaces.themes-version>1.0.8</org.primefaces.themes-version>
-    
-    <weblogic.version>10.3</weblogic.version>
-    <weblogic.version.minor>${weblogic.version}.4</weblogic.version.minor>
-    <weblogic.host>tidevwls03</weblogic.host>
-    <weblogic.port>7161</weblogic.port>
-    <weblogic.username>weblogic</weblogic.username>
-    <weblogic.password>password1</weblogic.password>
   </properties>
   
 	<dependencies>
@@ -202,34 +195,58 @@
 		</repository>  
 	</repositories>
 
+  <profiles>
+    <profile>
+      <id>deploy-to-wls</id>
+      <activation>
+        <property>
+          <name>wlsAutoDeploy</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <properties>
+		    <weblogic.version>10.3</weblogic.version>
+		    <weblogic.version.minor>${weblogic.version}.4</weblogic.version.minor>
+		    <weblogic.host>tidevwls03</weblogic.host>
+		    <weblogic.port>7161</weblogic.port>
+		    <weblogic.username>weblogic</weblogic.username>
+		    <weblogic.password>password1</weblogic.password>
+      </properties>
+      <build>
+        <plugins>
+		      <plugin>
+		        <groupId>com.oracle.weblogic</groupId>
+		        <artifactId>weblogic-maven-plugin</artifactId>
+		        <version>${weblogic.version.minor}</version>
+		        <configuration>
+		          <adminurl>t3://${weblogic.host}:${weblogic.port}</adminurl>
+		          <user>${weblogic.username}</user>
+		          <password>${weblogic.password}</password>
+		          <upload>true</upload>
+		          <action>deploy</action>
+		          <remote>false</remote>
+		          <verbose>true</verbose>
+		          <source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+		          <name>${project.build.finalName}</name>
+		        </configuration>
+		        <executions>
+		          <execution>
+		            <phase>install</phase>
+		            <goals>
+		              <goal>deploy</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		      </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
 	<build>
 	  <finalName>webflow-primefaces-showcase</finalName>
     <plugins>
-      <plugin>
-        <groupId>com.oracle.weblogic</groupId>
-        <artifactId>weblogic-maven-plugin</artifactId>
-        <version>10.3.4</version>
-        <configuration>
-          <adminurl>t3://${weblogic.host}:${weblogic.port}</adminurl>
-          <user>${weblogic.username}</user>
-          <password>${weblogic.password}</password>
-          <upload>true</upload>
-          <action>deploy</action>
-          <remote>false</remote>
-          <verbose>true</verbose>
-          <source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
-          <name>${project.build.finalName}</name>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>install</phase>
-            <goals>
-              <goal>deploy</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-  		<plugin>
+   		<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
