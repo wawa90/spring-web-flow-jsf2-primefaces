@@ -20,15 +20,17 @@
 <ui:define name="content">
 <h:form>
 	<p:messages />
-	<p>
+
+	<div>
 		<h:outputLabel value="String Value (type anything): " for="stringValue" /><br/>
 		<p:autoComplete id="stringValue" value="#{formBean.value}" completeMethod="#{personService.suggestNames}" />
-	</p>
-	<p>
+	</div>
+	<div>
 		<h:outputLabel value="Person (start with 'j'): " for="person" /><br/>
 		<p:autoComplete id="person" value="#{formBean.person}" completeMethod="#{personService.suggestPeople}" 
 			var="selectedPerson" itemLabel="#{selectedPerson.name}" itemValue="#{selectedPerson}" converter="personConverter"/>
-	</p>
+	</div>
+	
 	<h:panelGroup layout="block" styleClass="success" rendered="${formBean.value != null or formBean.person != null}">
 		<p>String Value: ${formBean.value}</p> 
 		<p>Person: ${formBean.person.name}</p> 
