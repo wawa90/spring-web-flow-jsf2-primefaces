@@ -18,7 +18,7 @@
     <javax.servlet-api-version>2.5</javax.servlet-api-version>
     <javax.servlet.jsp-api-version>2.1</javax.servlet.jsp-api-version>
     <javax.servlet.jstl-version>1.2</javax.servlet.jstl-version>
-    <jsf.mojarra-version>2.1.7</jsf.mojarra-version>
+    <jsf.mojarra-version>2.1.13</jsf.mojarra-version>
     <org.primefaces-version>3.4</org.primefaces-version>
     <org.primefaces.themes-version>1.0.8</org.primefaces.themes-version>
   </properties>
